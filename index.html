@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+          integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+            integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+    <link rel="stylesheet" href="./index.css">
+  </head>
+  <body class="m-0 flex flex-col min-h-screen font-montserrat">
+    <header
+        class="text-[#003B83] text-lg left-8 top-8 absolute z-[1020] flex justify-between items-center gap-8 bg-white/80 h-32 duration-200 max-w-6xl 2xl:max-w-7xl w-full border-r-8 border-[#F00] py-8 px-14 shadow-2xl backdrop-blur-xl">
+      <section class="flex gap-10">
+        <img src="./coat-of-arms.png" alt="">
+        <h1 class="m-0 duration-200 text-3xl 2xl:text-4xl font-medium">Вывоз мусора на полигоны ТБО и ТКО<br>
+          Новгородской области</h1>
+      </section>
+      <section class="space-x-10">
+        <button class="text-white py-1.5 px-3 bg-[#8092A8]">Полигоны</button>
+        <button>Техника</button>
+      </section>
+    </header>
+    <section
+        class="absolute z-[1010] text-white text-center right-0 top-0 bottom-0 max-w-2xl w-full flex flex-col gap-0.5 overflow-scroll">
+      <article class="bg-[#001E42] flex justify-end gap-4 py-8 px-14 text-2xl max-h-min">
+        <img src="./calendar.svg" alt="">
+        <time id="date"></time>
+      </article>
+      <article class="grow bg-[#00489FCC] p-8 backdrop-blur-xl rounded-b-2xl space-y-8">
+        <h1 class="text-4xl font-medium">Техника в работе</h1>
+        <section class="flex justify-center items-center gap-8">
+          <article class="space-y-4 min-w-max">
+            <span class="text-6xl font-light">57</span>
+            <p class="text-xl leading-none">единиц техники<br>
+              на линиях</p>
+          </article>
+          <article>
+            <svg width="74" height="220" viewBox="0 0 74 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                  d="M51.7359 87.4944C47.018 69.887 36.2635 54.4971 21.3513 44.0136L15.0913 52.9181C27.9157 61.934 37.1646 75.1693 41.222 90.3116L51.7359 87.4944Z"
+                  fill="#00B2FF"/>
+              <path
+                  d="M15.5108 174.949C29.523 166.859 40.6623 154.599 47.3759 139.878C54.0896 125.157 56.0433 108.708 52.9646 92.8234L49.1482 93.5631C52.073 108.653 50.217 124.28 43.839 138.265C37.461 152.25 26.8787 163.897 13.5671 171.583L15.5108 174.949Z"
+                  fill="white"/>
+            </svg>
+          </article>
+          <article class="space-y-4 text-left">
+            <section class="flex items-center gap-4">
+              <span class="text-3xl font-bold bg-[#00B2FF] py-3.5 rounded-full w-16 h-16 text-center">27</span>
+              <p class="text-xl font-medium">Великий<br>Новгород</p>
+            </section>
+            <section class="flex items-center gap-4">
+              <span
+                  class="text-3xl font-bold text-[#00B2FF] py-3.5 bg-white rounded-full w-16 h-16 text-center">30</span>
+              <p class="text-xl font-medium">Новгородская<br>область</p>
+            </section>
+          </article>
+        </section>
+      </article>
+      <article class="grow bg-[#00489FCC] p-8 backdrop-blur-xl rounded-2xl space-y-8">
+        <h1 class="text-4xl font-medium">Полигоны</h1>
+        <section class="space-y-8" id="polygonSection"></section>
+      </article>
+      <article class="grow bg-[#00489FCC] p-8 backdrop-blur-xl rounded-t-2xl space-y-8">
+        <h1 class="text-4xl font-medium">Нарушения</h1>
+        <section class="grid grid-cols-2 gap-8">
+          <article class="space-y-4">
+            <span class="text-6xl font-light">1</span>
+            <p class="text-lg leading-none">несанкционированная загрузка</p>
+          </article>
+          <article class="space-y-4">
+            <span class="text-6xl font-light">3</span>
+            <p class="text-lg leading-none">несанкционированных выгрузки</p>
+          </article>
+        </section>
+      </article>
+    </section>
+    <div id="mapid" class="grow"></div>
+    <div class="bg-[#001E42] shrink-0">
+      <footer class="flex gap-8 text-xs text-white justify-between py-8 px-14 max-w-[calc(100vw-42rem)]">
+        <img src="./asg.svg" alt="Antares Software Group">
+        <p class="flex gap-4">
+          <span>2023</span>
+          <span>Проект разработан при поддержке<br>
+            Правительства Новгородской области</span>
+        </p>
+      </footer>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
