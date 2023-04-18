@@ -1,3 +1,7 @@
+import './index.css'
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
+
 const map = L.map('mapid', { zoomControl: false }).setView([58.5222, 31.2831], 15);
 
 document.querySelector('.leaflet-control-attribution.leaflet-control').remove();
@@ -108,7 +112,7 @@ function* getRoute3LatLng() {
   yield { lat: 58.58051, lng: 31.29176 };
   yield { lat: 58.58122, lng: 31.29234 };
   yield { lat: 58.58183, lng: 31.29285 };
-  yield { lat: 58.58237, lng: 31.29329 };		
+  yield { lat: 58.58237, lng: 31.29329 };
   yield { lat: 58.58272, lng: 31.29359 };
   yield { lat: 58.58334, lng: 31.29409 };
   yield { lat: 58.58401, lng: 31.29464 };
@@ -194,35 +198,35 @@ const polygons = [{
   lat: 59.20184,
   lng: 33.40442,
   unloading: 25,
-  src: './polygon.png',
+  src: '/polygon.png',
   name: 'Полигон ТБО ООО Сетново'
 }, {
   id: 2,
   lat: 58.5985,
   lng: 31.3086,
   unloading: 445,
-  src: './polygon.png',
+  src: '/polygon.png',
   name: 'Полигон малотоксичных отходов ПАО Акрон'
 }, {
   id: 3,
   lat: 58.6423,
   lng: 30.2522,
   unloading: 58,
-  src: './polygon.png',
+  src: '/polygon.png',
   name: 'Полигон складирования хозяйственно-бытовых отходов п. Батецкий Новгородской области'
 }, {
   id: 4,
   lat: 58.84422,
   lng: 32.21863,
   unloading: 37,
-  src: './polygon.png',
+  src: '/polygon.png',
   name: 'Полигон ТБО ООО Экосервис в Малой Вишере'
 }, {
   id: 5,
   lat: 57.97098,
   lng: 31.39687,
   unloading: 10,
-  src: './polygon.png',
+  src: '/polygon.png',
   name: 'Полигон ТБО Старорусского района'
 }];
 
@@ -232,31 +236,31 @@ const vehicles = [{
   lng: 31.2697,
   unloading: 54,
   loading: 57,
-  src: './garbage-truck.png'
+  src: '/garbage-truck.png'
 }, {
   id: 2,
   lat: 58.54851,
   lng: 31.29614,
   unloading: 37,
   loading: 37,
-  src: './garbage-truck.png'
+  src: '/garbage-truck.png'
 }, {
   id: 3,
   lat: 58.58011,
   lng: 31.29353,
   unloading: 57,
   loading: 60,
-  src: './garbage-truck.png'
+  src: '/garbage-truck.png'
 }];
 
 const polygonIcon = L.icon({
-  iconUrl: './polygon.svg',
+  iconUrl: '/polygon.svg',
   iconSize: [56, 56],
   iconAnchor: [28, 28]
 });
 
 const carIcon = L.icon({
-  iconUrl: './garbage-truck.svg',
+  iconUrl: '/garbage-truck.svg',
   iconSize: [32, 32],
   iconAnchor: [16, 16]
 });
