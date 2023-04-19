@@ -6,7 +6,7 @@ const map = L.map('mapid', { zoomControl: false }).setView([58.5222, 31.2831], 1
 
 document.querySelector('.leaflet-control-attribution.leaflet-control').remove();
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}{r}.png', {
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   maxZoom: 18
 }).addTo(map);
